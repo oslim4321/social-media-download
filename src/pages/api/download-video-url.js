@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     const videoId = url.split("?")[0].split("/").pop(); // extract video ID
     const randomNumber = Math.floor(Math.random() * 1000000); // generate random number
     const filename = `${videoId}-${randomNumber}.mp4`; // add .mp4 extension and random number
-    const filepath = path.join(process.cwd(), "public", "videos", filename);
+    const filepath = path.join("tmp", filename); // save file to /tmp directory
     console.log(filepath);
 
     const writer = fs.createWriteStream(filepath);

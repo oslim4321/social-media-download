@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 export default function handler(req, res) {
-  const videosDirectory = path.join(process.cwd(), "public", "videos");
+  const videosDirectory = path.join(process.cwd(), "tmp");
   const fileNames = fs.readdirSync(videosDirectory);
   console.log(fileNames, "fileNames");
 
