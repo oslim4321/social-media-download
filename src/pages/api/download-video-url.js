@@ -12,9 +12,9 @@ export default async function handler(req, res) {
       responseType: "stream",
     });
 
-    // const url = "https://youtube.com/shorts/ojUZuzulSIE?feature=share";
     const videoId = url.split("?")[0].split("/").pop(); // extract video ID
-    const filename = `${videoId}.mp4`; // add .mp4 extension
+    const randomNumber = Math.floor(Math.random() * 1000000); // generate random number
+    const filename = `${videoId}-${randomNumber}.mp4`; // add .mp4 extension and random number
     const filepath = path.join(process.cwd(), "public", "videos", filename);
     console.log(filepath);
 

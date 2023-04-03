@@ -10,6 +10,9 @@ const VideoList = () => {
       .catch((error) => console.error(error));
   }, []);
   console.log(videos);
+  if (!videos) {
+    return <div>no videos</div>;
+  }
   return (
     <div>
       {videos.map((video) => (
