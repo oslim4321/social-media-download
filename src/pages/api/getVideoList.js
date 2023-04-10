@@ -6,6 +6,11 @@ export default function handler(req, res) {
   const fileNames = fs.readdirSync(videosDirectory);
   console.log(fileNames, "fileNames");
 
+  if (!fileNames.length) {
+    res.status(404).json("no file");
+    return;
+  }
+
   const files = fileNames.map((fileName) => {
     const filePath = path.join(videosDirectory, fileName);
     const fileContents = fs.readFileSync(filePath);
@@ -15,9 +20,6 @@ export default function handler(req, res) {
       contents: fileContents.toString("base64"),
     };
   });
-  if (!files.length) {
-    res.status(404).json("no file");
-  }
 
   res.status(200).json({ files });
 }
